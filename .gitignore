@@ -1,0 +1,9 @@
+venv/
+
+Ballroom/
+JCS_dataset/
+
+*.zip
+*.png
+*.txt
+
