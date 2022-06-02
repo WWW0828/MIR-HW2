@@ -2,6 +2,9 @@ venv/
 
 Ballroom/
 JCS_dataset/
+ASAP/
+ISMIR2004/
+SMC_MIREX/
 
 *.zip
 *.png
