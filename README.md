@@ -20,6 +20,11 @@
 ## Task1: tempo estimation
 ### Q1 (20%)
 Design an algorithm that estimate the tempo for the ISMIR2004 and the Ballroom dataset. Assume that the tempo of every clip is constant. Note that your algorithm should output two predominant tempi for each clip: 𝑇1 (the slower one) and 𝑇2 (the faster one). For example, you may simply try the two largest peak values in the tempogram over the whole clip. Please compare and discuss the results computed from the Fourier tempogram and the autocorrelation tempogram.
+Compute the average P-scores and the ALOTC scores of the ISMIR2004 dataset and the eight genres (Cha Cha, Jive, Quickstep, Rumba, Samba, Tango, Viennese Waltz and Slow Waltz) in the Ballroom dataset using your algorithms. The above process can all be found in the evaluation routine `mir_eval.tempo.detection`.
+
+> Note 1: if you want to use librosa.beat.tempo directly, you have to find some ways to let it 
+output two tempi.
+
 
 ### Q2 (20%)
 Instead of using your estimated [𝑇1, 𝑇2] in evaluation, try to use [𝑇1/2, 𝑇2/2], [𝑇1/3, 𝑇2/3], [2𝑇1, 2𝑇2], and [3𝑇1, 3𝑇2] for estimation. What are the resulting P-score values? Also, compare and discuss the results using the Fourier tempogram and the autocorrelation tempogram.
