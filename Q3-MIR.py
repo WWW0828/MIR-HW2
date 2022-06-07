@@ -18,15 +18,16 @@ ISMIR2004 = ['Abba', 'Alan_Parsons_Project', 'Alirio Diaz', 'aphex_twin', 'Asian
 for ds_id, dataset in enumerate([Ballroom, ISMIR2004]):
     
     if ds_id == 0:
+        continue
         print('#### Ballroom Dataset')
     else:
         print('#### ISMIR2004')
 
+    total_files = 0
+    AVG_ALOTC_SCORE = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
+    
     for g_id, genre in enumerate(dataset):
         
-        AVG_P_SCORE = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
-        AVG_ALOTC_SCORE = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
-
         if(ds_id == 0):
             folder_path = 'Ballroom/BallroomData/' + genre
         else:
@@ -106,17 +107,18 @@ for ds_id, dataset in enumerate([Ballroom, ISMIR2004]):
                 T12_AUTO.append([auto_frequency[ tempo_vector_auto[0][1]], auto_frequency[ tempo_vector_auto[1][1]]])
                 T12_FOURIER.append([fourier_frequency[tempo_vector_fourier[0][1]], fourier_frequency[tempo_vector_fourier[1][1]]])
                 
-                
                 # ALOTC_score
                 AVG_ALOTC_SCORE[0][w_id] += utils.ALOTC_SCORE(T12_AUTO[w_id], reference_bpm)
                 AVG_ALOTC_SCORE[1][w_id] += utils.ALOTC_SCORE(T12_FOURIER[w_id], reference_bpm)
-            
-        AVG_ALOTC_SCORE = [[score/len(files) for score in AVG_ALOTC_SCORE[0]], [score/len(files) for score in AVG_ALOTC_SCORE[1]]]
-        print('|{}|4s|6s|8s|10s|12s|'.format(genre))
-        print('|-----|----------|--------|------------|------------|----------|')
-        print('|{}|{:6f}|{:6f}|{:6f}|{:6f}|{:6f}|'.format("AC", AVG_ALOTC_SCORE[0][0], AVG_ALOTC_SCORE[0][1], AVG_ALOTC_SCORE[0][2], AVG_ALOTC_SCORE[0][3], AVG_ALOTC_SCORE[0][4]))
-        print('|{}|{:6f}|{:6f}|{:6f}|{:6f}|{:6f}|'.format("FOURIER", AVG_ALOTC_SCORE[1][0], AVG_ALOTC_SCORE[1][1], AVG_ALOTC_SCORE[1][2], AVG_ALOTC_SCORE[1][3], AVG_ALOTC_SCORE[1][4]))
-        print()
+        
+        total_files += len(files)   
+    
+    AVG_ALOTC_SCORE = [[score/total_files for score in AVG_ALOTC_SCORE[0]], [score/total_files for score in AVG_ALOTC_SCORE[1]]]
+    print('|{}|4s|6s|8s|10s|12s|'.format(genre))
+    print('|-----|----------|--------|------------|------------|----------|')
+    print('|{}|{:6f}|{:6f}|{:6f}|{:6f}|{:6f}|'.format("AC", AVG_ALOTC_SCORE[0][0], AVG_ALOTC_SCORE[0][1], AVG_ALOTC_SCORE[0][2], AVG_ALOTC_SCORE[0][3], AVG_ALOTC_SCORE[0][4]))
+    print('|{}|{:6f}|{:6f}|{:6f}|{:6f}|{:6f}|'.format("FOURIER", AVG_ALOTC_SCORE[1][0], AVG_ALOTC_SCORE[1][1], AVG_ALOTC_SCORE[1][2], AVG_ALOTC_SCORE[1][3], AVG_ALOTC_SCORE[1][4]))
+    print()
     
     
     
