@@ -43,3 +43,6 @@ Also use this algorithm on the SMC, JCS, and ASAP datasets. Compare and discuss 
 ## Task3: meter recognition (bonus)
 ### Q6 (20%)
 The meter of a song can be 2-beats, 3-beats, 4-beats, 5-beats, 6-beats, 7-beats, or others. There might be multiple meters existing in a song (e.g., a 4-beats section followed by a 3-beats section). As a task combining both beat tracking and downbeat tracking, meter recognition is still a challenging task. Could you design an algorithm to detect the instantaneous meter of a song? Test the algorithm on the clips in the JCS dataset, and report frame-wise accuracy. The 1, 2, 3, 4, 5 after every line in the annotation file is the meter annotation. You can simply use `madmom.features.beats` (the state-of-the-art beat tracker) or combine other functions mentioned above.
+
+## Report
+You can find the report [here](https://hackmd.io/@Weng/MIR_HW2_Result)
